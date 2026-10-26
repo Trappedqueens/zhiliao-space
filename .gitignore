@@ -1,0 +1,46 @@
+HELP.md
+target/
+.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+data/
+.venv/
+__pycache__/
+
+# Local configuration, private data and old generated frontend revisions
+.env
+.env.*
+!.env.example
+*.log
+deploy/nginx.conf
+deploy/nginx.original-*.conf
+src/main/resources/static/assets/*-local-v1.js
+src/main/resources/static/assets/*-local-v2.js

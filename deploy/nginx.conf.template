@@ -1,0 +1,30 @@
+worker_processes 1;
+pid "@@PROJECT_ROOT@@/target/nginx.pid";
+error_log "@@PROJECT_ROOT@@/target/nginx-error.log";
+events { worker_connections 1024; }
+http {
+    include "@@NGINX_HOME@@/conf/mime.types";
+    default_type application/octet-stream;
+    sendfile on;
+    keepalive_timeout 65;
+    client_max_body_size 451m;
+    access_log "@@PROJECT_ROOT@@/target/nginx-access.log";
+    client_body_temp_path "@@PROJECT_ROOT@@/target/nginx-client-temp";
+    proxy_temp_path "@@PROJECT_ROOT@@/target/nginx-proxy-temp";
+    server {
+        listen 5173;
+        server_name localhost;
+        root "@@PROJECT_ROOT@@/src/main/resources/static";
+        index index.html;
+        location / { try_files $uri $uri/ /index.html; }
+        location /api/ {
+            proxy_pass http://127.0.0.1:8080/;
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_read_timeout 300s;
+            proxy_send_timeout 300s;
+            proxy_buffering off;
+        }
+    }
+}

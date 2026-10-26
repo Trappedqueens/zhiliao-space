@@ -95,7 +95,7 @@ ollama pull qwen3-vl:2b-instruct
 .\start.ps1 -Build -BackendOnly
 ```
 
-打开 **http://localhost:8080/**，即可使用前端页面与后端接口。
+打开 [http://localhost:8080/](http://localhost:8080/)，即可使用前端页面与后端接口。
 
 该模式无需 Nginx。脚本优先使用已安装的 Maven，没有 Maven 命令时使用 `mvnw.cmd`。也可以直接运行：
 
@@ -121,7 +121,7 @@ $env:NGINX_HOME = 'C:\tools\nginx'
 .\start.ps1 -NginxHome 'C:\tools\nginx'
 ```
 
-打开 **http://localhost:5173/**。
+打开 [http://localhost:5173/](http://localhost:5173/)。
 
 启动脚本会根据项目目录与 Nginx 目录，从 `deploy/nginx.conf.template` 生成本地 `deploy/nginx.conf`，无需提交个人电脑的绝对路径。Nginx 使用项目独立的运行目录与配置；请避免同时启动另一个占用 5173 的默认实例。
 

@@ -22,7 +22,7 @@ if profile:
 for name in files:
     if not name:
         continue
-    if name.startswith(('data/', 'target/', '.venv/', '.idea/')) or name == 'deploy/nginx.conf' or name.startswith('deploy/nginx.original-'):
+    if set(Path(name).parts) & {'data', 'target', '.venv', '.idea', 'node_modules', 'dist'} or name == 'deploy/nginx.conf' or name.startswith('deploy/nginx.original-'):
         blocked.append(name)
     data = subprocess.check_output(['git', 'show', ':' + name], cwd=root)
     if Path(name).suffix.lower() not in ('.png', '.ico'):

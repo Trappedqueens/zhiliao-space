@@ -3,11 +3,12 @@ import argparse
 import base64
 import io
 import json
+import os
 import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-MODEL = ROOT / 'data' / 'models' / 'whisper-base'
+MODEL = Path(os.environ.get('APP_WHISPER_MODEL_DIR', ROOT / 'data' / 'models' / 'whisper-base'))
 
 
 def whisper(download=False):

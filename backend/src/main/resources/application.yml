@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: spring-ai
+  servlet:
+    multipart:
+      max-file-size: 150MB
+      max-request-size: 451MB
+  mvc:
+    async:
+      request-timeout: 300000
+  ai:
+    ollama:
+      base-url: ${OLLAMA_BASE_URL:http://localhost:11434}
+      chat:
+        model: ${TEXT_MODEL:qwen2.5:1.5b}
+        options:
+          temperature: 0.3
+          num-ctx: 8192
+          num-predict: 1024
+
+logging:
+  level:
+    com.itheima.ai: info
+
+app:
+  data-dir: ${APP_DATA_DIR:./data}
+  vision-model: ${VISION_MODEL:qwen3-vl:2b-instruct}
+  media-python: ${APP_MEDIA_PYTHON:.venv/Scripts/python.exe}
+  media-script: ${APP_MEDIA_SCRIPT:tools/media.py}

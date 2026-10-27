@@ -44,3 +44,10 @@ deploy/nginx.conf
 deploy/nginx.original-*.conf
 src/main/resources/static/assets/*-local-v1.js
 src/main/resources/static/assets/*-local-v2.js
+
+# Separated frontend and backend build outputs
+**/node_modules/
+**/dist/
+**/target/
+frontend/.env.local
+frontend/.env.*.local

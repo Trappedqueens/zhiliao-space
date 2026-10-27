@@ -14,7 +14,7 @@ http {
     server {
         listen 5173;
         server_name localhost;
-        root "@@PROJECT_ROOT@@/src/main/resources/static";
+        root "@@PROJECT_ROOT@@/frontend/dist";
         index index.html;
         location / { try_files $uri $uri/ /index.html; }
         location /api/ {
